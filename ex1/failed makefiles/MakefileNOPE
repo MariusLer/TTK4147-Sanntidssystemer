@@ -1,0 +1,14 @@
+functions.o:linked_list.c linked_list.h
+	gcc -c linked_list.c -o functions.o
+
+core.o:list_test.c linked_list.h
+	gcc -c list_test.c -o core.o
+
+program:core.o functions.o
+	gcc -wall core.o functions.o -o program
+
+
+clean:
+	rm -f functions.o
+	rm -f core.o
+	rm -f program

@@ -1,0 +1,7 @@
+compiled.o: list_test.c $(linked_list.c linked_list.h)
+	gcc -c linked_list.c -o compiled.o
+	gcc compiled.o -o compiled
+
+clean:
+	rm -f compiled.o
+	rm -f compiled
