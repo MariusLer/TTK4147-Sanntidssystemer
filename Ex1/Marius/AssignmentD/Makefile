@@ -1,11 +1,11 @@
 # program executable name
-TARGET = sort_args
+TARGET = prog
 
 # compiler flags
 CFLAGS = -g -Wall
 
 # linker flags
-LDFLAGS = -g
+LDFLAGS = -g -lrt -pthread
 
 # list of sources
 SOURCES = $(shell find -name "*.c")
@@ -18,7 +18,7 @@ OBJECTS = $(SOURCES:.c=.o)
 
 # link programs
 $(TARGET): $(OBJECTS)
-	gcc $(LDFLAGS) -o $@ $^
+	gcc $(LDFLAGS) -o  $@ $^
 
 # compile
 %.o : %.c
