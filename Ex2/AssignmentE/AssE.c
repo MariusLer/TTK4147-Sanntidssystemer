@@ -32,11 +32,11 @@ void* philosopher(void* arg){
 }
 
 int main(){
-	pthread_mutex_t** list1 = (pthread_mutex_t**) malloc(2*sizeof(pthread_mutex_t*));
-	pthread_mutex_t** list2 = (pthread_mutex_t**) malloc(2*sizeof(pthread_mutex_t*));
-	pthread_mutex_t** list3 = (pthread_mutex_t**) malloc(2*sizeof(pthread_mutex_t*));
-	pthread_mutex_t** list4 = (pthread_mutex_t**) malloc(2*sizeof(pthread_mutex_t*));
-	pthread_mutex_t** list5 = (pthread_mutex_t**) malloc(2*sizeof(pthread_mutex_t*));
+	pthread_mutex_t** list1 = malloc(2*sizeof(pthread_mutex_t*));
+	pthread_mutex_t** list2 = malloc(2*sizeof(pthread_mutex_t*));
+	pthread_mutex_t** list3 = malloc(2*sizeof(pthread_mutex_t*));
+	pthread_mutex_t** list4 = malloc(2*sizeof(pthread_mutex_t*));
+	pthread_mutex_t** list5 = malloc(2*sizeof(pthread_mutex_t*));
 	list1[0] = &fork1;
 	list1[1] = &fork2;
 	list2[0] = &fork2;
