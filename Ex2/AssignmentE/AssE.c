@@ -29,6 +29,7 @@ void* philosopher(void* arg){
 		printf("%s%d\n","Philosor thinking, ID: ",id);
 		//usleep(1000);
 	}
+	return NULL;
 }
 
 int main(){
