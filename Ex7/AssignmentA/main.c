@@ -6,15 +6,6 @@
 #include <sys/mman.h> 
 #include <time.h>
 
-void timespec_add_us(struct timespec *t, long us){
-	t->tv_nsec += us*1000;
-
-	if (t->tv_nsec > 1000000000){
-		t->tv_nsec -= 1000000000;
-		t->tv_sec += 1;
-	}
-}
-
 void task(void* arg){
 	rt_printf("Task 1 Waiting \n");
 	RT_SEM* ptr = (RT_SEM*)arg;
@@ -31,22 +22,15 @@ void task2(void* arg){
 
 void task3(void* arg){
 	RT_SEM* ptr = (RT_SEM*)arg;
-	
-	struct timespec tid;
-	clock_gettime(CLOCK_REALTIME,&tid);
-	timespec_add_us(&tid, 1000000);
 	rt_printf("Sleeping \n");
 
-	clock_nanosleep(CLOCK_REALTIME,TIMER_ABSTIME, &tid, NULL);
+	rt_task_sleep(1000*1000*1000);
 	rt_printf("Waking up \n");
 
 	rt_printf("Unblocking semaphore\n");
 	rt_sem_broadcast(ptr);
-
-	clock_gettime(CLOCK_REALTIME,&tid);
-	timespec_add_us(&tid, 100000);
-	clock_nanosleep(CLOCK_REALTIME,TIMER_ABSTIME, &tid, NULL);
 	
+	rt_task_sleep(1000*1000*1000);	
 }
 
 int main()
