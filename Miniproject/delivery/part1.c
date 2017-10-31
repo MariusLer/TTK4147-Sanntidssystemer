@@ -41,8 +41,8 @@ int main()
 			udp_send(&udp,"STOP",5);
 			break;
 		}
-		askAck:
 		udp_send(&udp, "GET", 4);
+		askAck:
 		udp_receive(&udp, buffer, BUFFER_LENGTH);
 		if (buffer[0] == 'S'){ // Special case where server sends out SIGNAL message
 			goto askAck;
